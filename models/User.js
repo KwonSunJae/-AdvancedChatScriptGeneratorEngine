@@ -24,7 +24,17 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
     user.associate = (models) => {
-        
+        user.hasMany(models.cacheddialog, {
+            foreignKey: "user_no",
+            onDelete: "cascade",
+            allowNull: "false",
+        });
+        user.hasMany(models.foods,{
+            foreignKey: "user_no",
+            onDelete: "cascade",
+            allowNull: "false",
+        });
+
     };
     return user;
 };
