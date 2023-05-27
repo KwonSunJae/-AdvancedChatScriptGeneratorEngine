@@ -23,4 +23,8 @@ app.use((err, req, res, next) => {
     res.status(500).json({ status: "failed", message: err.message });
 });
 
+app.listen(3000, () => {
+    console.log(`server is listening at localhost:${process.env.PORT}`);
+});
+
 module.exports = app;

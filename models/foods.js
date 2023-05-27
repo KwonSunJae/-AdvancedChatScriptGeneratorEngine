@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             },
             capacity: {
-                type: DataTypes.INT,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             is_new : {
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
     foods.associate = (models) => {
-        history.belongsTo(models.user, {
+        foods.belongsTo(models.user, {
             foreignKey: "user_no",
         })
     }

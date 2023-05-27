@@ -3,9 +3,8 @@ module.exports = (sequelize, DataTypes) => {
         "cacheddialog",
         {
             order: {
-                type: DataTypes.INT,
+                type: DataTypes.INTEGER,
                 allowNull: false,
-                autoIncrement: true
             },
             userchat: {
                 type: DataTypes.TEXT,
@@ -23,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
     cacheddialog.associate = (models) => {
-        history.belongsTo(models.user, {
+        cacheddialog.belongsTo(models.user, {
             foreignKey: "user_no",
         })
     }
