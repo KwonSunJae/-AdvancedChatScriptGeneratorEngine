@@ -1,10 +1,11 @@
 const db = require("../models");
 const logger = require("../modules/winton");
-
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/.env" });
 const {Configuration, OpenAIApi} = require("openai");
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -181,9 +182,14 @@ const process = {
                 db.cacheddialog
                 .create(
                     {
-                        
+                        order : 0,
+                        userchat : "opening",
+                        wimnchat : dialogs,
+                        user_no : userNo
                     }
-                )
+                ).then((results)=>{
+
+                })
             });
         })
         .catch((error)=>{
