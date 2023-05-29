@@ -22,6 +22,7 @@ const data = {
                 next(err);
             });
     },
+
 };
 
 const process = {
@@ -29,7 +30,8 @@ const process = {
     signUp: async (req, res, next) => {
         let user_info = req.body;
         logger.info(JSON.stringify(req.body));
-        let essentialDatas = "[\"" + user_info.loveFood + "를 좋아함.\" , \"" + user_info.dagner +" 알러지가 있음.\" ]";
+        let essentialDatas = "[\"" + user_info.loveFood + "를 좋아함.\" , \"" + user_info.danger +" 알러지가 있음.\" ]";
+        console.log(essentialDatas);
         let flag = false;
         if (user_info == null) {
             res.json({ results: false, message: "No request body" });
@@ -38,29 +40,17 @@ const process = {
         db.user
             .create({
                 username: user_info.username,
-                essentialData : user_info.essentialDatas,
+                essentialdata : essentialDatas,
             })
             .then((results) => {
                 flag = true;
+                console.log(results.no);
+                res.status(201).json({"no":results.no});
             })
             .catch((err) => {
                 next(err);
             });
 
-        if (flag) {
-            db.user
-                .findOne({
-                    attributes : ["no"],
-                    where : { username : user_info.username}
-                })
-                .then((results)=>{
-                    res.json(results);
-                    
-                })
-                .catch((err)=>{
-                    next(err);
-                });
-        }
     },
     
         
