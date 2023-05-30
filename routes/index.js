@@ -7,4 +7,5 @@ router.get("/user/initNang/:userNo",dialogController.process.initNang);
 router.post("/user/testIntense",dialogController.process.checkIntense);
 router.get("/dialog/open/:userNo",dialogController.process.createOpeningDialog);
 router.get("/dialog/isCreate/:userNo",dialogController.process.checkQeued);
+router.get("/dialog/popDialog/:userNo",dialogController.process.popDialog);
 module.exports = router;

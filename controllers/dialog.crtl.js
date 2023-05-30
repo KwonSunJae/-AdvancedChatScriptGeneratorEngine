@@ -229,24 +229,26 @@ const process = {
         
     },
     popDialog: async (req,res,next)=>{
-        let userNo = req.parms.userNo;
-        logger.info(JSON>stringfy(req.params));
+        let userNo = req.params.userNo;
+        logger.info(JSON.stringify(req.params));
 
         db.qeue
         .findAll(
-            {where : {user_no : userNo},order : {order : ASC}}
+            {where : {user_no : userNo},order : [['order', 'ASC']]}
         )
         .then((result)=>{
 
-            res.status(200).send(JSON.parse(result))
+            res.status(200).send(result)
             db.qeue
-            .delete(
+            .destroy(
                 {where : {user_no : userNo}}
             )
             .then((result)=>{
-                logger.info(JSON.stringify(result));
+                logger.info(result);
             })
-            .catch(error)
+            .catch((error)=>{
+                next(error);
+            })
         })
     },
     userAsk: async (req, res, next) => {
