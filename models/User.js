@@ -39,7 +39,11 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade",
             allowNull: "false",
         });
-
+        user.hasMany(models.qeue,{
+            foreignKey: "user_no",
+            onDelete: "cascade",
+            allowNull: "false",
+        });
     };
     return user;
 };

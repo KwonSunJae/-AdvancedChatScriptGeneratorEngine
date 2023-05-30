@@ -41,6 +41,7 @@ const process = {
             .create({
                 username: user_info.username,
                 essentialdata : essentialDatas,
+                isQeued : false,
             })
             .then((results) => {
                 flag = true;
@@ -49,6 +50,7 @@ const process = {
             })
             .catch((err) => {
                 next(err);
+                res.status(503).json("error");
             });
 
     },

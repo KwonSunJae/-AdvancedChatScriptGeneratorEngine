@@ -1,3 +1,4 @@
+"use strict";
 const db = require("../models");
 const logger = require("../modules/winton");
 const dotenv = require("dotenv");
@@ -5,7 +6,7 @@ dotenv.config({ path: "./config/.env" });
 const {Configuration, OpenAIApi} = require("openai");
 
 const configuration = new Configuration({
-    apiKey: process.env.API_KEY,
+    apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -16,14 +17,14 @@ const getIntense = async (userNo, newDialog ,callback) => {
     const prompt = "User Questions:" + newDialog + "\
     There are three types of answers to user questions.\
 First, a situation where you have to recommend a recipe. Second, I recommend a shopping list. Third, all conversations except the first and the second. Which of the three should I answer to the user question above? Answer only in the JSON form of {answerTypeIndex:<INT>}";
-
+    console.log("isit fuck?");   
     const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [{role: "user", content: prompt}],
         temperature: 0,
         top_p : 1
     });
-    
+    console.log("isit fuck?");
     const duration = Date.now() - start;
     console.log(response.data.choices[0].message.content);
     callback(JSON.parse(response.data.choices[0].message.content).answerTypeIndex);
@@ -31,19 +32,20 @@ First, a situation where you have to recommend a recipe. Second, I recommend a s
 }
 const getOpeningDialog = async (nang,callback) => {
     const start = Date.now();
+    console.log(nang.cacheddialog);
     const prompt = "User Refrigerator Item:" + nang + 
-    "Please analyze the items in the user's refrigerator and give me 3 sentences of advice.\
-    For the output format, please answer in {responseAdvice:<TEXT>} JSON format."
+    "Please analyze the items in the user's refrigerator and give me 3 sentences of advice or each item's status briefing with foodname.\
+    For the output format, please Korean answer in {responseAdvice:<TEXT>} JSON format."
     const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [{role: "user", content: prompt}],
         temperature: 0,
         top_p : 1
     });
+
     
     const duration = Date.now() - start;
     console.log(response.data.choices[0].message.content);
-    
     console.log(duration / 1000);
     callback(response.data.choices[0].message.content);
 }
@@ -167,28 +169,55 @@ const process = {
         });
         res.status(202).send();
     },
-    
+    checkQeued : async (req,res,next)=>{
+        let userNo = req.params.userNo;
+
+        db.user
+        .findOne(
+            {where : { no : userNo}}
+        ).then((result)=>{
+            if(result.isQeued)res.status(200).send("OK");
+            else res.status(204).send("NoContent");
+        })
+        .catch((error)=>{
+            next(error);
+        });
+
+    },
     createOpeningDialog : async (req,res,next)=>{
 
         let userNo = req.params.userNo;
         let foods;
         db.foods
         .findAll({
+            attributes: ["food", "deadline","is_new","capacity"],
             where : {user_no : userNo}
         })
         .then((result)=>{
             getOpeningDialog(result,function(dialogs){
                 console.log(dialogs);
-                db.cacheddialog
+                db.qeue
                 .create(
                     {
                         order : 0,
-                        userchat : "opening",
                         wimnchat : dialogs,
+                        types : 3,
                         user_no : userNo
                     }
                 ).then((results)=>{
-
+                    console.log(results);
+                    db.user
+                    .update({
+                        isQeued: true
+                    },{where : {no : userNo}}) .then((results)=>{
+                        logger.info(JSON.stringify(results));
+                    })
+                    .catch((error)=>{
+                        next(error);
+                    })
+                })
+                .catch((error)=>{
+                    next(error);
                 })
             });
         })
@@ -199,7 +228,27 @@ const process = {
         res.status(202).send();
         
     },
+    popDialog: async (req,res,next)=>{
+        let userNo = req.parms.userNo;
+        logger.info(JSON>stringfy(req.params));
 
+        db.qeue
+        .findAll(
+            {where : {user_no : userNo},order : {order : ASC}}
+        )
+        .then((result)=>{
+
+            res.status(200).send(JSON.parse(result))
+            db.qeue
+            .delete(
+                {where : {user_no : userNo}}
+            )
+            .then((result)=>{
+                logger.info(JSON.stringify(result));
+            })
+            .catch(error)
+        })
+    },
     userAsk: async (req, res, next) => {
         let data = req.body;
         logger.info(JSON.stringify(req.body));
@@ -213,6 +262,7 @@ const process = {
             let orders;
             db.cacheddialog
             .findAll(
+
                 {where : {user_no : usern}}
             )
             .then( (results)=>{
