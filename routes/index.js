@@ -8,4 +8,5 @@ router.post("/user/testIntense",dialogController.process.checkIntense);
 router.get("/dialog/open/:userNo",dialogController.process.createOpeningDialog);
 router.get("/dialog/isCreate/:userNo",dialogController.process.checkQeued);
 router.get("/dialog/popDialog/:userNo",dialogController.process.popDialog);
+router.get("/user/getEssential/:userNo",userController.data.getEssentialDatabyUserNo);
 module.exports = router;

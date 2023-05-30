@@ -32,9 +32,9 @@ First, a situation where you have to recommend a recipe. Second, I recommend a s
 }
 const getOpeningDialog = async (nang,callback) => {
     const start = Date.now();
-    console.log(nang.cacheddialog);
-    const prompt = "User Refrigerator Item:" + nang + 
-    "Please analyze the items in the user's refrigerator and give me 3 sentences of advice or each item's status briefing with foodname.\
+    console.log(nang);
+    const prompt = "User Refrigerator Item:" + JSON.stringify(nang) + 
+    "Please analyze the items in the user's refrigerator and give me 3 sentences of advice or each item's status briefing with food attributes.\
     For the output format, please Korean answer in {responseAdvice:<TEXT>} JSON format."
     const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
@@ -101,6 +101,7 @@ const data = {
             .findOne({
                 attributes: ["no", "username","essentialdata"],
                 where: { no: userNo },
+                raw : true
             })
             .then((data) => {
                 res.send(data);
@@ -140,7 +141,7 @@ const process = {
         {
             food : "고추가루",
             deadline : "2040-01-01",
-            capacity : -1,
+            capacity : 999,
             is_new : 0,
             user_no : userNo,
         }];
@@ -191,7 +192,8 @@ const process = {
         db.foods
         .findAll({
             attributes: ["food", "deadline","is_new","capacity"],
-            where : {user_no : userNo}
+            where : {user_no : userNo},
+            raw : true
         })
         .then((result)=>{
             getOpeningDialog(result,function(dialogs){

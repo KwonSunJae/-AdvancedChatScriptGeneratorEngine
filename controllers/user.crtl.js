@@ -5,8 +5,8 @@ const logger = require("../modules/winton");
 const data = {
     
     getEssentialDatabyUserNo: async (req, res, next) => {
-        let userNo = req.params.user_no;
-        if (!userName) {
+        let userNo = req.params.userNo;
+        if (!userNo) {
             res.json({ results: false, message: "No request params" });
             return;
         }
