@@ -10,4 +10,5 @@ router.get("/dialog/isCreate/:userNo",dialogController.processs.checkQeued);
 router.get("/dialog/popDialog/:userNo",dialogController.processs.popDialog);
 router.get("/user/getEssential/:userNo",userController.data.getEssentialDatabyUserNo);
 router.post("/user/ask",dialogController.processs.userAsk);
+router.get("/user/flush/:userNo",dialogController.processs.flushCache);
 module.exports = router;
