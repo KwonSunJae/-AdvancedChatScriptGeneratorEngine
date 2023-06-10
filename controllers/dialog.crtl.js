@@ -30,6 +30,35 @@ First, a situation where you have to recommend a recipe. Second, I recommend a s
     callback(JSON.parse(response.data.choices[0].message.content.split("(")[0]).answerTypeIndex, userNo, newDialog);
     console.log(duration / 1000);
 }
+
+const messageGenerator = (systemp, prompt, cachedDialog) => {
+    let message = [];
+    cachedDialog.sort((c1, c2) => c1.order - c2.order);
+
+    for (let i = 0; i < cachedDialog.length; i++) {
+        message.push({
+            role: "user",
+            content: cachedDialog[i].userchat
+        });
+        message.push({
+            role: "assistant",
+            content: cachedDialog[i].wimnchat
+        });
+    }
+
+    message.push({
+        role: "system",
+        content: systemp
+    });
+
+    message.push({
+        role: "user",
+        content: prompt
+    });
+
+    return message;
+}
+
 const getDaily = async (userNo, newDialog, f, u, c, callback) => {
     const start = Date.now();
     console.log(newDialog);
@@ -37,15 +66,24 @@ const getDaily = async (userNo, newDialog, f, u, c, callback) => {
     let userInfo = u;
     let cacheddialog = c;
 
+    // Before
+    // let prompt = "User information for the current conversation: " + await userInfo + "\
+    // User Refrigerator's Ingredients List: " + await foods + "\
+    // Previous conversation:" + await cacheddialog + "User Talk:" + await newDialog + "\
+    // UserTalk above is what User said. You have to rsponse about 1 line in Korean.Please answer in the JSON form of { \"response\" : \"<TEXT>\"}."
+
+    // After
     let prompt = "User information for the current conversation: " + await userInfo + "\
     User Refrigerator's Ingredients List: " + await foods + "\
-    Previous conversation:" + await cacheddialog + "User Talk:" + await newDialog + "\
+    User Talk:" + await newDialog + "\
     UserTalk above is what User said. You have to rsponse about 1 line in Korean.Please answer in the JSON form of { \"response\" : \"<TEXT>\"}."
+
     const systemp = "Your name is \"왓마냉(wimn)\" The function you are providing is an intelligent secretary who communicates with users. When you answer, you have to answer with ONLY JSON format according to the specified form. Do not say another response."
     console.log(prompt);
+    const message = messageGenerator(systemp, prompt, cacheddialog);
     const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{ role: "system", content: systemp }, { role: "user", content: prompt }],
+        messages: message,
         temperature: 0,
         top_p: 1
     });
@@ -53,7 +91,6 @@ const getDaily = async (userNo, newDialog, f, u, c, callback) => {
     console.log(response.data.choices[0].message.content);
     callback(JSON.parse(response.data.choices[0].message.content.split("(")).response, newDialog);
     console.log(duration / 1000);
-
 }
 
 
@@ -85,14 +122,14 @@ const getShoppingList = async (userNo, newDialog, f, u, c, callback) => {
 
     let prompt = "User information for the current conversation: " + await userInfo + "\
     User Refrigerator's Ingredients List: " + await foods + "\
-    Previous conversation:" + await cacheddialog + "\
     User Ask : \"" + newDialog +"\"\
     Based on the above information, please recommend an appropriate shopping list to the current user. 대답형식은 {\"shoppingList\" : [ { \"foodName\" : <string>, \"reason\" : <TEXT>},]}Please respond in Korean according to JSON format like this."
     const systemp = "Your name is \"왓마냉(wimn)\" The function you are providing is an intelligent secretary who communicates with users. When you answer, you have to answer with ONLY JSON format according to the specified form. Do not say another response."
     console.log(prompt);
+    const message = messageGenerator(systemp, prompt, cacheddialog);
     const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{ role: "system", content: systemp }, { role: "user", content: prompt }],
+        messages: message,
         temperature: 0,
         top_p: 1
     });
@@ -112,14 +149,14 @@ const getRecipe = async (userNo, newDialog, f, u, c, callback) => {
 
     let prompt = "User information for the current conversation: " + await userInfo + "\
     User Refrigerator's Ingredients List: " + await foods + "\
-    Previous conversation:" + await cacheddialog + "\
     User Ask : \"" + newDialog +"\"\
     Based on the above information, please recommend an appropriate recipe to the current user. The answer format is {\"recipeName\": <string>, \"process\": [ <List : string> ]}Please respond in Korean according to JSON format like this."
     const systemp = "Your name is \"왓마냉(wimn)\" The function you are providing is an intelligent secretary who communicates with users. When you answer, you have to answer with ONLY JSON format according to the specified form. Do not say another response."
     console.log(prompt);
+    const message = messageGenerator(systemp, prompt, cacheddialog);
     const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{ role: "system", content: systemp }, { role: "user", content: prompt }],
+        messages: message,
         temperature: 0,
         top_p: 1
     });
