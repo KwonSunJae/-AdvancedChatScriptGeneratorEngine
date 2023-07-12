@@ -12,11 +12,11 @@ Status: Planning
 - 많은 데이터를 주입하면서도 빠르게 답변을 생성하여 사용자에게 불편함을 최소화한다.
 
 
-<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_001.jpeg height="100"/>
+<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_001.jpeg" height="100"/>
 
-<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-31_003.jpeg height="100"/>
+<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-31_003.jpeg" height="100"/>
  
-<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_002.jpeg height="100"/>
+<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_002.jpeg" height="100"/>
 
 
 
