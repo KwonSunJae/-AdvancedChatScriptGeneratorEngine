@@ -11,11 +11,11 @@ Status: Planning
 - 사용자 데이터 축적 기반의 대화라 함은 단순히 질문에 대해 직관적인 답변을 내는것이 아닌 이전의 대화를 바탕으로 맥락을 판단하고 상황에 맞는 답변을 생성한다는 뜻이다.
 - 많은 데이터를 주입하면서도 빠르게 답변을 생성하여 사용자에게 불편함을 최소화한다.
 
-![KakaoTalk_Photo_2023-07-07-12-34-30 001.jpeg](%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%8E%E1%85%AE%E1%86%A8%E1%84%8C%E1%85%A5%E1%86%A8%20%E1%84%80%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B4%20GPT%20Prompt%20Engine%20a2f0efa8e8004971816d1f0ecb3ce934/KakaoTalk_Photo_2023-07-07-12-34-30_001.jpeg)
+![KakaoTalk_Photo_2023-07-07-12-34-30 001.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_001.jpeg)
 
-![KakaoTalk_Photo_2023-07-07-12-34-31 003.jpeg](%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%8E%E1%85%AE%E1%86%A8%E1%84%8C%E1%85%A5%E1%86%A8%20%E1%84%80%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B4%20GPT%20Prompt%20Engine%20a2f0efa8e8004971816d1f0ecb3ce934/KakaoTalk_Photo_2023-07-07-12-34-31_003.jpeg)
+![KakaoTalk_Photo_2023-07-07-12-34-31 003.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-31_003.jpeg)
 
-![KakaoTalk_Photo_2023-07-07-12-34-30 002.jpeg](%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%8E%E1%85%AE%E1%86%A8%E1%84%8C%E1%85%A5%E1%86%A8%20%E1%84%80%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B4%20GPT%20Prompt%20Engine%20a2f0efa8e8004971816d1f0ecb3ce934/KakaoTalk_Photo_2023-07-07-12-34-30_002.jpeg)
+![KakaoTalk_Photo_2023-07-07-12-34-30 002.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_002.jpeg)
 
 ## Installation&Configuration Files Format
 
@@ -25,13 +25,13 @@ Status: Planning
 
 ---
 
-![Untitled](%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%8E%E1%85%AE%E1%86%A8%E1%84%8C%E1%85%A5%E1%86%A8%20%E1%84%80%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B4%20GPT%20Prompt%20Engine%20a2f0efa8e8004971816d1f0ecb3ce934/Untitled.png)
+![Untitled](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/Untitled.png)
 
 ## Original Algorithm & Problems
 
 ---
 
-![Untitled](%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%8E%E1%85%AE%E1%86%A8%E1%84%8C%E1%85%A5%E1%86%A8%20%E1%84%80%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B4%20GPT%20Prompt%20Engine%20a2f0efa8e8004971816d1f0ecb3ce934/Untitled%201.png)
+![Untitled](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/Untitled%201.png)
 
 1. UDCS ( UserDataControlServer)에 사용자의 발화나 사용자의 행동에 대한 캡셔닝 데이터가 주어진다.
 2. UDCS에서 사용자 필수 정보들을 데이터베이스에서 가져오고, 이전의 대화(Cached Dialog)와 함께 프롬프트를 생성하고 GPT에게 요청을 날린다.
@@ -74,7 +74,7 @@ Status: Planning
 
 ---
 
-![NewArlgorithn.png](%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%E1%84%8E%E1%85%AE%E1%86%A8%E1%84%8C%E1%85%A5%E1%86%A8%20%E1%84%80%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B4%20GPT%20Prompt%20Engine%20a2f0efa8e8004971816d1f0ecb3ce934/NewArlgorithn.png)
+![NewArlgorithn.png](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/NewArlgorithn.png)
 
 1. UDCS ( UserDataControlServer)에 사용자의 발화나 사용자의 행동에 대한 캡셔닝 데이터가 주어진다.
 2. UDCS에서는 사용자 필수 정보들을 데이터베이스에서 가져오고, ~~이전의 대화(Cached Dialog)와 함께 프롬프트를 생성하고 GPT에게 요청을 날린다.~~
