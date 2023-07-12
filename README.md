@@ -11,11 +11,14 @@ Status: Planning
 - 사용자 데이터 축적 기반의 대화라 함은 단순히 질문에 대해 직관적인 답변을 내는것이 아닌 이전의 대화를 바탕으로 맥락을 판단하고 상황에 맞는 답변을 생성한다는 뜻이다.
 - 많은 데이터를 주입하면서도 빠르게 답변을 생성하여 사용자에게 불편함을 최소화한다.
 
-![KakaoTalk_Photo_2023-07-07-12-34-30 001.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_001.jpeg){: height="100"}
 
-![KakaoTalk_Photo_2023-07-07-12-34-31 003.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-31_003.jpeg){: height="100"}
+<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_001.jpeg height="200"/>
 
-![KakaoTalk_Photo_2023-07-07-12-34-30 002.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_002.jpeg){: height="100"}
+<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-31_003.jpeg height="200"/>
+ 
+<img src="https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_002.jpeg height="200"/>
+
+
 
 ## Installation&Configuration Files Format
 
@@ -85,6 +88,7 @@ Status: Planning
 7. UDCS는 해당 데이터를 받아 사용자필수정보를 최신화시켜 지속적으로 앞으로 대화에 필요한 맥락들을 저장한다. 
 
 > ***Q1. 어느정도의 성능 개선이 이루어졌는가요? (동일 API responseTime test 100회 수행)***
+>
 일상대화 : avg 3.2s
 장보기 리스트 : avg 7.3s
 레시피 추천 : avg 9.7s
@@ -92,7 +96,9 @@ Status: Planning
 > 
 
 > ***Q2. 응답 속도가 빨라진 이유가 무엇인가요?
+>
 A.*** 일단 기본적으로 , 발화된 내용을 제공되는 기능별로 Intense를 나누는 것이 크게 작용한것 같습니다. 이전의 경우, 모든 대화 도메인에 대해서 스크립트를 생성하다보니 정확도도 크게 떨어지며, 고려해야될 데이터가 너무 방대하다보니 2분이상의 응답시간이 나왔었습니다. 하지만, 이제는 ‘오늘 뭐먹지?’ 와 같은 내용을 묻는다면 레시피추천을 해줘야하는 답변으로 Intense를 분석하고 레시피추천만을 위한 프롬프트를 이용해 레시피 추천에 대한 내용만 생성하면 되니 속도가 크게 개선되었습니다.
-
 그리고 마지막으로 한번 대화할때마다, 저장해야될 사용자 필수 정보를 대화가 종료될때로 조건을 바꾸니 크게 향상되었습니다. 캐쉬된 데이터를 통해서도 충분히 맥락을 파악을 할 수 있기 때문에 생성된 대화의 질의 저하는 없었습니다.
 >
+
+
