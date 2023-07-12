@@ -11,11 +11,11 @@ Status: Planning
 - 사용자 데이터 축적 기반의 대화라 함은 단순히 질문에 대해 직관적인 답변을 내는것이 아닌 이전의 대화를 바탕으로 맥락을 판단하고 상황에 맞는 답변을 생성한다는 뜻이다.
 - 많은 데이터를 주입하면서도 빠르게 답변을 생성하여 사용자에게 불편함을 최소화한다.
 
-![KakaoTalk_Photo_2023-07-07-12-34-30 001.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_001.jpeg){:height="200"}
+![KakaoTalk_Photo_2023-07-07-12-34-30 001.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_001.jpeg){: height="100"}
 
-![KakaoTalk_Photo_2023-07-07-12-34-31 003.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-31_003.jpeg){:height="200"}
+![KakaoTalk_Photo_2023-07-07-12-34-31 003.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-31_003.jpeg){: height="100"}
 
-![KakaoTalk_Photo_2023-07-07-12-34-30 002.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_002.jpeg){:height="200"}
+![KakaoTalk_Photo_2023-07-07-12-34-30 002.jpeg](https://github.com/KwonSunJae/-AdvancedChatScriptGeneratorEngine/blob/main/README/KakaoTalk_Photo_2023-07-07-12-34-30_002.jpeg){: height="100"}
 
 ## Installation&Configuration Files Format
 
